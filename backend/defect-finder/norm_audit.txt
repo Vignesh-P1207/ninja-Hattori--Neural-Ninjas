@@ -1,0 +1,60 @@
+﻿======================================================================
+  TEXT NORMALIZATION AUDIT (Mandatory Component 1)
+  Records: 9996
+======================================================================
+
+[CHECK 1] Lowercase Conversion
+--------------------------------------------------
+  [FAIL] 8184 records still have uppercase chars
+         Samples: ['DEF-00001', 'DEF-00002', 'DEF-00003']
+  BEFORE: " Created by Darrell Kindred  dkindred mozilla cs cmu edu  on Tuesday  April 7  1998 10 57 25 AM PDT
+"
+  AFTER:  "created darrell kindred dkindred mozilla cmu edu tuesday april NUM TOKEN NUM TOKEN NUM TOKEN NUM TOK"
+
+[CHECK 2] Special Character Removal
+--------------------------------------------------
+  [PASS] All 9996 records have no special characters
+  [PASS] URLs removed
+  [PASS] HTML tags removed
+  [PASS] Emails removed
+
+[CHECK 3] Stopword Removal
+--------------------------------------------------
+  [PASS] Stopword ratio: 0.02% (sampled 500 records)
+         8 stopword tokens out of 36636 total
+  BEFORE: " Created by Sarah Wilson  swilson netscape com  on Tuesday  April 7  1998 6 24 44 PM PDT
+Additional Details  
+just a test for QA purposes 
+Updated by Sarah Wilson  swilson netscape com  on Tuesday  Ap"
+  AFTER:  "created sarah wilson swilson netscape com tuesday april NUM TOKEN NUM TOKEN NUM TOKEN NUM TOKEN NUM TOKEN pdt created sarah wilson swilson netscape com tuesday april NUM TOKEN NUM TOKEN NUM TOKEN NUM "
+
+[CHECK 4] Whitespace Stripping
+--------------------------------------------------
+  [WARN] Leading/trailing whitespace: 1168 records
+  [PASS] Double spaces: 0 records
+  [PASS] Tabs/newlines: 0 records
+
+[CHECK 5] Combined Text Field (title + description + steps + actual)
+--------------------------------------------------
+  [PASS] combined_text field present in all records
+  [PASS] 9996/9996 records have non-empty combined_text
+  Verification on DEF-00036:
+    [PASS] title content found in combined_text
+    [PASS] steps content found in combined_text
+    [PASS] actual content found in combined_text
+  Sample combined_text (1500 chars): "Created by Kartik Subbarao  subbarao computer org  on Sunday  April 12  1998 2 08 10 PM PDT . Created by Kartik Subbarao  subbarao computer org  on Sunday  April 12  1998 2 08 10 PM PDT
+Additional Det..."
+  Avg normalized_text length WITH steps/actual: 496 chars
+  Avg normalized_text length WITHOUT:           436 chars
+  [PASS] Normalized text is longer when steps/actual present (confirms merge)
+
+======================================================================
+  TEXT NORMALIZATION AUDIT SUMMARY
+======================================================================
+  [FAIL]  Lowercase conversion
+  [PASS]  Special char removal
+  [PASS]  Stopword removal
+  [FAIL]  Whitespace stripping
+  [PASS]  Combined text field
+
+  >> 2 check(s) need attention: Lowercase conversion, Whitespace stripping

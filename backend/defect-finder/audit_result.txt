@@ -1,0 +1,62 @@
+﻿======================================================================
+  DATA LAYER AUDIT - Duplicate Defect Finder
+======================================================================
+
+[CHECK 1] Dataset Loaded (Jira/Bugzilla/GitBugs)
+--------------------------------------------------
+  [PASS] Loaded 9993 defect records from processed_defects.json
+  Source: Bugzilla/Mozilla Bug Reports (fix.csv + sev.csv)
+
+[CHECK 2] All 8 Required Fields
+--------------------------------------------------
+  [PASS] defect_id       (key: defect_id         ) - 9,993 populated (100.0%)
+  [PASS] title           (key: title             ) - 9,993 populated (100.0%)
+  [PASS] description     (key: raw_description   ) - 9,993 populated (100.0%)
+  [PASS] steps           (key: steps             ) - 3,420 populated (34.2%)
+  [PASS] expected        (key: expected          ) - 2,992 populated (29.9%)
+  [PASS] actual          (key: actual            ) - 1,719 populated (17.2%)
+  [PASS] environment     (key: environment       ) - 2,423 populated (24.2%)
+  [PASS] logs            (key: logs              ) - 473 populated (4.7%)
+
+  [PASS] All 8 required fields are present in every record
+
+[CHECK 3] Cleaned & Normalized Data
+--------------------------------------------------
+  [PASS] normalized_text field present in all records
+  [PASS] 9,993 / 9,993 have non-empty normalized text
+  Sample: "created darrell kindred dkindred mozilla cmu edu tuesday april NUM TOKEN NUM TOKEN NUM TOKEN NUM TOKEN NUM TOKEN pdt additional detail pressing alt se..."
+  [PASS] TF-IDF vectorizer saved (193 KB)
+  [PASS] Embeddings: shape=(9993, 5000), dtype=float32
+  [PASS] FAISS index saved (191 MB)
+
+[CHECK 4] Missing/Null Field Handling
+--------------------------------------------------
+  [PASS] missing_fields detected for each record
+  [PASS] Average missing fields per record: 3.0
+  Missing field breakdown:
+      actual         : 8,279 records (82.8%)
+      environment    : 7,626 records (76.3%)
+      expected       : 7,004 records (70.1%)
+      steps          : 6,578 records (65.8%)
+      title          : 44 records (0.4%)
+  [PASS] No null/NaN values in critical fields (defect_id, title)
+
+[CHECK 5] Train/Test Split
+--------------------------------------------------
+  [PASS] fix_train.csv      exists (55.9 MB)
+  [PASS] fix_test.csv       exists (8.7 MB)
+  [PASS] sev_train.csv      exists (55.9 MB)
+  [PASS] sev_test.csv       exists (8.6 MB)
+  [WARN] No processed train/test split yet (source splits available)
+      -> NEEDS: Generate train_defects.json / test_defects.json
+
+======================================================================
+  AUDIT SUMMARY
+======================================================================
+  [PASS]  Dataset Loaded
+  [PASS]  All 8 Fields
+  [PASS]  Cleaned & Normalized
+  [PASS]  Missing/Null Handled
+  [FAIL]  Train/Test Split
+
+  >> 1 check(s) need attention: Train/Test Split

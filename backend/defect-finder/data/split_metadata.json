@@ -1,0 +1,34 @@
+{
+  "total": 9996,
+  "train_size": 8631,
+  "test_size": 1365,
+  "train_ratio": 0.8635,
+  "test_ratio": 0.1365,
+  "train_embedding_shape": [
+    8631,
+    5000
+  ],
+  "test_embedding_shape": [
+    1365,
+    5000
+  ],
+  "id_overlap": 0,
+  "source_train_file": "fix_train.csv",
+  "source_test_file": "fix_test.csv",
+  "train_severity": {
+    "minor": 428,
+    "normal": 5957,
+    "major": 1210,
+    "trivial": 189,
+    "critical": 656,
+    "blocker": 191
+  },
+  "test_severity": {
+    "normal": 980,
+    "blocker": 71,
+    "major": 162,
+    "minor": 37,
+    "trivial": 14,
+    "critical": 101
+  }
+}

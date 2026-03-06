@@ -1,0 +1,16 @@
+﻿Generating train/test split for processed defects...
+  Total processed defects: 9993
+  Embeddings shape: (9993, 5000)
+  Source split ratio: 86.35% train / 13.65% test
+  Train set: 8628 defects, embeddings (8628, 5000)
+  Test set:  1365 defects, embeddings (1365, 5000)
+  ID overlap: 0 (should be 0)
+
+Saved:
+  - train_defects.json (8628 records)
+  - test_defects.json  (1365 records)
+  - train_embeddings.npy (8628, 5000)
+  - test_embeddings.npy  (1365, 5000)
+  - split_metadata.json
+
+[DONE] Train/test split generated successfully!

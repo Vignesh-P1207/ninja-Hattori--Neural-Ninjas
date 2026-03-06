@@ -1,0 +1,99 @@
+﻿python : Warning: You are 
+sending unauthenticated 
+requests to the HF Hub. 
+Please set a HF_TOKEN to 
+enable higher rate limits 
+and faster downloads.
+At line:1 char:1
++ python -X utf8 defect-finde
+r/audit_embeddings.py 2>&1 | 
+Out-File -Enc ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (Warning  
+  : You ar...ster download   
+ s.:String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+======================================================================
+  EMBEDDINGS AUDIT (Mandatory Component 2)
+======================================================================
+
+[CHECK 1] Embedding Model Loaded (all-MiniLM-L6-v2 or similar)
+--------------------------------------------------
+  [PASS] Model: all-MiniLM-L6-v2
+  [PASS] Dimension: 384
+  [PASS] Index size: 9996 vectors
+  [PASS] Model is all-MiniLM-L6-v2 (required)
+
+Loading weights:   0%|       
+   | 0/103 [00:00<?, ?it/s]
+Loading weights: 100%|ΓûêΓûêΓ
+ûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 
+103/103 [00:00<00:00, 
+9579.43it/s]
+[1mBertModel LOAD 
+REPORT[0m from: sentence-tra
+nsformers/all-MiniLM-L6-v2
+Key                     | 
+Status     |  | 
+------------------------+----
+--------+--+-
+embeddings.position_ids | 
+UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be 
+ignored when loading from 
+different task/architecture; 
+not ok if you expect 
+identical arch.[0m
+  [PASS] Model loaded successfully at runtime (dim=384)
+
+[CHECK 2] All Existing Defects Embedded
+--------------------------------------------------
+  Total defects: 9996
+  Embedding shape: (9996, 384)
+  [PASS] Every defect has a corresponding embedding (9996 == 9996)
+  [PASS] Zero vectors: 0
+  [PASS] NaN vectors: 0
+
+[CHECK 3] New Report Embedded at Query Time
+--------------------------------------------------
+  [PASS] Query text embedded successfully
+  Query embedding shape: (1, 384)
+  Query embedding dim: 384
+  [PASS] Query dim (384) matches stored dim (384)
+  [PASS] FAISS search returned 5 results
+  Top match: defect_id=DEF-03342, score=0.4971
+  [PASS] app.py uses embedding_model.encode() for query-time embedding
+
+[CHECK 4] Vectors Stored Properly
+--------------------------------------------------
+  [PASS] processed_embeddings.npy (14.6 MB)
+  [PASS] faiss_index.bin (14.6 MB)
+  [PASS] embedding_model_meta.json
+  [PASS] FAISS index contains 9996 vectors (matches 9996 defects)
+  [PASS] L2 normalized: mean norm = 1.0000 (should be ~1.0)
+
+[CHECK 5] Embedding Dimension Consistent
+--------------------------------------------------
+  Model declared dim: 384
+  Stored embeddings dim: 384
+  FAISS index dim: 384
+  Metadata dim: 384
+  [PASS] All dimensions consistent: 384
+
+======================================================================
+  EMBEDDINGS AUDIT SUMMARY
+======================================================================
+  [PASS]  Embedding model loaded (all-MiniLM-L6-v2)
+  [PASS]  All existing defects embedded
+  [PASS]  New report embedded at query time
+  [PASS]  Vectors stored properly
+  [PASS]  Embedding dimension consistent
+
+  >> All embeddings checks PASSED!

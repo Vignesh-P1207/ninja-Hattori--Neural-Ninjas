@@ -1,0 +1,30 @@
+﻿python : Traceback (most 
+recent call last):
+At line:1 char:1
++ python -X utf8 -c "exec(ope
+n('defect-finder/audit_embedd
+ings.py', enc ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (Traceba  
+  ck (most recent call las   
+ t)::String) [], RemoteEx    
+ception
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+  File "<string>", line 1, 
+in <module>
+    exec(open('defect-finder/
+audit_embeddings.py', 
+encoding='utf-8').read())
+    ~~~~^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
+  File "<string>", line 12, 
+in <module>
+NameError: name '__file__' 
+is not defined. Did you 
+mean: '__name__'?

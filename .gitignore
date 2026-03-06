@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+venv/
+env/
+.venv/
+
+# Node / Frontend
+node_modules/
+dist/
+.DS_Store
+
+# Large dataset CSV/text files (too big for GitHub)
+backend/*.csv
+backend/*.txt
+backend/fix.csv
+backend/sev.csv
+backend/fix_train.csv
+backend/sev_train.csv
+backend/corpus*.txt
+gitbugs/**/*.csv
+gitbugs/**/*.txt
+
+# Processed ML output (large files)
+backend/defect-finder/data/processed_defects.json
+backend/defect-finder/data/processed_embeddings.npy
+backend/defect-finder/data/*.index
+backend/defect-finder/data/*.pkl
+backend/defect-finder/data/*.npy
+
+# Environment
+.env
+*.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+preprocess_out.txt
